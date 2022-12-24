@@ -22,4 +22,6 @@ void microMouseServer::studentAI()
  * void printUI(const char *mesg);
 */
 
+    moveForward();
+
 }
