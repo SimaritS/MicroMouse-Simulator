@@ -21,35 +21,26 @@ void microMouseServer::studentAI()
  * void foundFinish();
  * void printUI(const char *mesg);
 */
+    bool wL = isWallLeft();
+    bool wR = isWallRight();
+    bool wF = isWallForward();
 
-//printUI(const char *mesg);
-
-   /* moveForward();
-
-    int turns = 0;
-
-    if(isWallForward()) {
+    // Walls on all 3 sides. Deadend ahead. Turn back.
+    if (wL && wF && wR) {
         turnLeft();
-        turns++;
+        turnLeft();
     }
 
-    if(turns % 2) {
-        moveForward();
-    }*/
-
-    /*if(isWallForward()) {
-        turnLeft();
-        turns++;
-    }*/
-
-    if (!isWallForward()){
-        moveForward();
-    } else if (isWallRight()){
-        turnLeft();
-        moveForward();
-    } else {
+    // Right turn only. Walls on Left and Front sides. Turn right.
+    if (wL && wF && !wR) {
         turnRight();
-        moveForward();
     }
 
- }
+    // If no wall on Left. Always turn left.
+    if (!wL) {
+        turnLeft();
+    }
+
+    //Keep moving forward
+    moveForward();
+}
