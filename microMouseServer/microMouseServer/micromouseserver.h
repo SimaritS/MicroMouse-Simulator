@@ -63,6 +63,9 @@ private:
     struct baseMapNode mazeData[MAZE_WIDTH][MAZE_HEIGHT];
     void connectSignals();
     void initMaze();
+
+    //Initializing the variable
+    int rtCount = 0;
 };
 
 #endif // MICROMOUSESERVER_H

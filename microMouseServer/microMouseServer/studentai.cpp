@@ -21,6 +21,7 @@ void microMouseServer::studentAI()
  * void foundFinish();
  * void printUI(const char *mesg);
 */
+
     bool wL = isWallLeft();
     bool wR = isWallRight();
     bool wF = isWallForward();
@@ -29,18 +30,28 @@ void microMouseServer::studentAI()
     if (wL && wF && wR) {
         turnLeft();
         turnLeft();
+        rtCount=0;
     }
 
     // Right turn only. Walls on Left and Front sides. Turn right.
     if (wL && wF && !wR) {
         turnRight();
+        rtCount++;
     }
 
     // If no wall on Left. Always turn left.
     if (!wL) {
         turnLeft();
+        rtCount=0;
     }
 
-    //Keep moving forward
+    //Keep moving forward.
     moveForward();
+
+    //The right turn counter. When it reaches 3 the mouse should stop.
+    if(rtCount==3){
+       foundFinish();
+       printUI("Congratulations! You've reached the end!");
+    }
+
 }
