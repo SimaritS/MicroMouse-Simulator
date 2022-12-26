@@ -30,29 +30,28 @@ void microMouseServer::studentAI()
     if (wL && wF && wR) {
         turnLeft();
         turnLeft();
-        moveForward();
         rtCount=0;
     }
 
-    // Right turn only. Walls on Left and Front sides. Turn right.
+    // Right turn only. Turn right.
     if (wL && wF && !wR) {
         turnRight();
-        moveForward();
         rtCount++;
     }
 
     // If no wall on Left. Always turn left.
     if (!wL) {
         turnLeft();
-        moveForward();
         rtCount=0;
     }
 
-    //If wall on left &  no wall in front keep moving forward.
+    //If wall on left & no wall in front no change.
     if (wL && !wF){
-        moveForward();
         rtCount=0;
     }
+
+    //Mouse direction already set, Move fwd.
+    moveForward();
 
     //The right turn counter. When it reaches 3 the mouse should stop.
     if(rtCount==3){
