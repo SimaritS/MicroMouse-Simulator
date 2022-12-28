@@ -64,8 +64,6 @@ private:
     void connectSignals();
     void initMaze();
 
-    //Initializing the variable
-    int rtCount = 0;
 };
 
 #endif // MICROMOUSESERVER_H
